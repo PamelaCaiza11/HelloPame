@@ -20,10 +20,10 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
  
-      - name: Build and push hellow
+      - name: Build and push devops
         run: |
-          docker build ./ -f ./Dockerfile -t ${{ secrets.DOCKER_HUB_USERNAME }}/hellow:latest
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/hellow:latest
+          docker build ./ -f ./Dockerfile -t ${{ secrets.DOCKER_HUB_USERNAME }}/devops:latest
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/devops:latest
  
   deploy:
     name: Deploy to AWS EC2
@@ -64,8 +64,8 @@ jobs:
             sudo docker rm $(sudo docker ps -aq) || true
  
             # Descargar la última imagen y ejecutar el contenedor
-            sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/hellow:latest
-            sudo docker run -d --name hellow -p 8081:8080 ${{ secrets.DOCKER_HUB_USERNAME }}/hellow:latest
+            sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/devops:latest
+            sudo docker run -d --name devops -p 8081:8080 ${{ secrets.DOCKER_HUB_USERNAME }}/devops:latest
  
             # Limpiar imágenes no utilizadas
             sudo docker image prune -af
