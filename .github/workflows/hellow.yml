@@ -65,7 +65,7 @@ jobs:
  
             # Descargar la última imagen y ejecutar el contenedor
             sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/devops:latest
-            sudo docker run -d --name devops -p 8081:8080 ${{ secrets.DOCKER_HUB_USERNAME }}/devops:latest
+            sudo docker run -d --name devops -p 8081:80 ${{ secrets.DOCKER_HUB_USERNAME }}/devops:latest
  
             # Limpiar imágenes no utilizadas
             sudo docker image prune -af

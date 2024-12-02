@@ -5,7 +5,7 @@ FROM nginx
 COPY index.html /usr/share/nginx/html/
 
 # Expose port 80 to access the content
-EXPOSE 8080
+EXPOSE 80
 
 # Default command to start Nginx
 CMD ["nginx", "-g", "daemon off;"]
